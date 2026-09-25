@@ -97,13 +97,13 @@
                 <div class="fld"><label>סכום משיכה רצוי (₪, עד למקסימום)</label><input type="number" id="withdrawAmount" value="350000"></div>
                 <div class="fld"><label>מסלול ריבית</label>
                     <select id="rateTrack">
-                        <option value="4.80">קבועה צמודה (4.80%)</option>
-                        <option value="7.50">קבועה לא צמודה (7.50%)</option>
-                        <option value="8.50">פריים (8.50%)</option>
+                        <option value="4.80">קבועה צמודה</option>
+                        <option value="7.50">קבועה לא צמודה</option>
+                        <option value="8.50">פריים</option>
                         <option value="custom">אחר - הזן ידנית</option>
                     </select>
                 </div>
-                <div class="fld"><label>ריבית שנתית בפועל (%)</label><input type="number" step="0.01" id="rate" value="4.80"></div>
+                <div class="fld"><label>הריבית שקיבלת בעסקה (%)</label><input type="number" step="0.01" id="rate" value="4.80"><div class="hint">מתמלא אוטומטית לפי המסלול שבחרת למעלה - אפשר לשנות בכל עת לפי מה שקיבלתם בפועל</div></div>
                 <div class="fld"><label>מדד המחירים - שיעור שנתי (%)</label><input type="number" step="0.01" id="cpi" value="2.00"></div>
                 <div class="fld"><label>תקופה לתחזית (שנים)</label><input type="number" id="years" value="20"></div>
             </div>
@@ -206,8 +206,12 @@
     }));
 
     document.getElementById('rateTrack').addEventListener('change', (e) => {
+        const rateInput = document.getElementById('rate');
         if(e.target.value !== 'custom'){
-            document.getElementById('rate').value = e.target.value;
+            rateInput.value = e.target.value;
+        } else {
+            rateInput.value = '';
+            rateInput.focus();
         }
         calcAll();
     });
