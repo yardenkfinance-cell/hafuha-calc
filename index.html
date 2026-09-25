@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחשבון משכנתא הפוכה - מימון מקסימלי והחזר | ירדן קובי</title>
+    <meta name="description" content="מחשבון משכנתא הפוכה - כמה מימון מקסימלי אפשר לקבל לפי גיל ושווי הנכס, באשראי חוץ בנקאי מול בנקאי, וחישוב מסלולי החזר: גרייס, בלון מלא, או ריבית וקרן.">
+    <link rel="canonical" href="https://hafuha-calc.yardenkoubi.com/">
+    <meta property="og:title" content="מחשבון משכנתא הפוכה | ירדן קובי">
+    <meta property="og:description" content="מימון מקסימלי לפי גיל ומסלולי החזר למשכנתא הפוכה.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hafuha-calc.yardenkoubi.com/">
+    <meta property="og:locale" content="he_IL">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+    :root {
+        --bd: #1e3a8a; --b: #2563eb; --bl: #60a5fa; --am: #f59e0b;
+        --g50: #f8fafc; --g200: #e2e8f0; --g400: #94a3b8; --g600: #475569; --g800: #1e293b;
+        --sh: 0 8px 32px rgba(0,0,0,.10); --r: 14px; --rs: 9px
+    }
+    body { font-family:'Assistant','Heebo',sans-serif; background:linear-gradient(135deg,#e8f0fe,#f0f9ff,#fefce8); min-height:100vh; padding:24px 14px 48px; color:var(--g800) }
+    .w { max-width: 960px; margin: 0 auto }
+    .hd { text-align:center; margin-bottom:20px }
+    .badge { display:inline-flex; align-items:center; gap:6px; background:var(--bd); color:#fff; font-size:12px; font-weight:700; padding:4px 13px; border-radius:20px; margin-bottom:9px }
+    .hd h1 { font-family:'Heebo',sans-serif; font-weight:900; font-size:clamp(22px,5.2vw,32px); background:linear-gradient(135deg,var(--bd),var(--b),var(--bl)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1.25; margin-bottom:8px }
+    .hd p { color:var(--g600); font-size:13.5px; max-width:600px; margin:0 auto; line-height:1.55 }
+    .sec { background:#fff; border-radius:var(--r); box-shadow:var(--sh); padding:18px; margin-bottom:16px }
+    .sec h2 { font-family:'Heebo',sans-serif; font-weight:900; font-size:16px; color:var(--bd); margin-bottom:12px }
+    .grid3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px }
+    .fld label { display:block; font-size:12px; font-weight:700; color:var(--g600); margin-bottom:4px }
+    .fld input, .fld select { width:100%; padding:9px 10px; border:1.5px solid var(--g200); border-radius:8px; font-size:14px; font-family:inherit }
+    .fld input:focus, .fld select:focus { outline:none; border-color:var(--b) }
+    .channel { display:flex; gap:8px; margin-bottom:10px }
+    .chbtn { flex:1; text-align:center; padding:10px 8px; border-radius:9px; font-weight:800; font-size:12.5px; cursor:pointer; background:var(--g50); border:1.5px solid var(--g200); color:var(--g600) }
+    .chbtn.active { background:linear-gradient(135deg,var(--bd),var(--b)); color:#fff; border-color:transparent }
+    .rgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-bottom:14px }
+    .rbox { background:var(--g50); border-radius:var(--rs); padding:13px; text-align:center }
+    .rbox strong { display:block; font-size:18px; color:var(--bd); font-weight:900 }
+    .rbox span { font-size:11px; color:var(--g600) }
+    .rbox.big strong { font-size:24px }
+    .rbox.warn strong { color:#b91c1c }
+    .track { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px }
+    .trackbtn { flex:1; min-width:120px; text-align:center; padding:10px 8px; border-radius:9px; font-weight:800; font-size:12.5px; cursor:pointer; background:var(--g50); border:1.5px solid var(--g200); color:var(--g600) }
+    .trackbtn.active { background:linear-gradient(135deg,var(--bd),var(--b)); color:#fff; border-color:transparent }
+    table.res-table { width:100%; border-collapse:collapse; font-size:12.5px }
+    table.res-table th { background:var(--g50); color:var(--bd); font-weight:800; padding:6px 5px; text-align:center; border-bottom:2px solid var(--g200) }
+    table.res-table td { padding:6px 5px; text-align:center; border-bottom:1px solid var(--g200); color:var(--g600) }
+    .nbox { background:#fff8e1; border:1.5px solid #fde68a; border-radius:9px; padding:11px 13px; font-size:12.5px; color:#7c5e00; margin-top:12px; font-weight:600; line-height:1.6 }
+    .cta { background:linear-gradient(135deg,var(--bd),var(--b)); color:#fff; border-radius:var(--r); padding:20px; text-align:center }
+    .cta h3 { font-family:'Heebo',sans-serif; font-weight:900; font-size:17px; margin-bottom:5px }
+    .cta p { font-size:13px; opacity:.9; margin-bottom:13px }
+    .ctab { display:flex; gap:8px; justify-content:center; flex-wrap:wrap }
+    .bph { display:inline-flex; align-items:center; gap:5px; background:var(--am); color:#1a1200; padding:9px 17px; border-radius:30px; font-weight:900; font-size:13.5px; text-decoration:none }
+    .bwa { display:inline-flex; align-items:center; gap:5px; background:#25d366; color:#fff; padding:9px 17px; border-radius:30px; font-weight:900; font-size:13.5px; text-decoration:none }
+    .back-home { position:fixed; bottom:20px; left:20px; z-index:9999; display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,var(--bd),var(--b)); color:#fff; padding:10px 18px; border-radius:30px; font-family:'Heebo',sans-serif; font-weight:800; font-size:13px; text-decoration:none; box-shadow:0 4px 16px rgba(30,58,138,.35) }
+    </style>
+</head>
+<body>
+    <div class="w">
+        <div class="hd">
+            <div class="badge">🏡 מחשבון | ירדן קובי — יועץ משכנתאות</div>
+            <h1>מחשבון משכנתא הפוכה</h1>
+            <p>מימון מקסימלי לפי גיל ושווי הנכס, ובדיקת ההחזר לפי מסלול המשיכה שתבחרו</p>
+        </div>
+
+        <div class="sec">
+            <h2>⚙️ נתוני הלקוח והנכס</h2>
+            <div class="grid3">
+                <div class="fld"><label>גיל הלקוח (אם זוג - גיל הצעיר/ה מביניהם)</label><input type="number" id="age" value="70"></div>
+                <div class="fld"><label>שווי הנכס המוערך (₪)</label><input type="number" id="propValue" value="1500000"></div>
+            </div>
+            <div style="margin-top:12px">
+                <label style="display:block;font-size:12px;font-weight:700;color:var(--g600);margin-bottom:6px">ערוץ המימון</label>
+                <div class="channel">
+                    <div class="chbtn active" data-ch="nonbank">אשראי חוץ בנקאי / חברת ביטוח</div>
+                    <div class="chbtn" data-ch="bank">בנקאי (שמרני יותר)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sec res">
+            <h2>📊 המימון המקסימלי שלכם</h2>
+            <div class="rgrid">
+                <div class="rbox"><strong id="rBasePct">-</strong><span>אחוז בסיסי לפי גיל</span></div>
+                <div class="rbox"><strong id="rFinalPct">-</strong><span>אחוז מימון סופי</span></div>
+                <div class="rbox big"><strong id="rMaxAmount">-</strong><span>סכום מימון מקסימלי</span></div>
+            </div>
+            <div class="nbox" id="channelNote"></div>
+        </div>
+
+        <div class="sec">
+            <h2>💸 סכום משיכה ותנאי ריבית</h2>
+            <div class="grid3">
+                <div class="fld"><label>סכום משיכה רצוי (₪, עד למקסימום)</label><input type="number" id="withdrawAmount" value="350000"></div>
+                <div class="fld"><label>מסלול ריבית</label>
+                    <select id="rateTrack">
+                        <option value="4.80">קבועה צמודה (4.80%)</option>
+                        <option value="7.50">קבועה לא צמודה (7.50%)</option>
+                        <option value="8.50">פריים (8.50%)</option>
+                        <option value="custom">אחר - הזן ידנית</option>
+                    </select>
+                </div>
+                <div class="fld"><label>ריבית שנתית בפועל (%)</label><input type="number" step="0.01" id="rate" value="4.80"></div>
+                <div class="fld"><label>מדד המחירים - שיעור שנתי (%)</label><input type="number" step="0.01" id="cpi" value="2.00"></div>
+                <div class="fld"><label>תקופה לתחזית (שנים)</label><input type="number" id="years" value="20"></div>
+            </div>
+        </div>
+
+        <div class="sec">
+            <h2>🛤️ בחרו מסלול החזר</h2>
+            <div class="track">
+                <div class="trackbtn active" data-tr="balloon">בלון מלא (ללא החזר חודשי)</div>
+                <div class="trackbtn" data-tr="grace">גרייס (ריבית בלבד)</div>
+                <div class="trackbtn" data-tr="pi">ריבית + קרן (שפיצר)</div>
+            </div>
+            <div class="nbox" id="trackNote"></div>
+        </div>
+
+        <!-- BALLOON RESULTS -->
+        <div class="sec res trackres" id="res-balloon">
+            <h2>📈 בלון מלא - איך הקרן מתנפחת עם השנים</h2>
+            <div class="rgrid">
+                <div class="rbox"><strong id="bStart">-</strong><span>סכום שנמשך</span></div>
+                <div class="rbox big warn"><strong id="bEnd">-</strong><span id="bEndLabel">יתרת חוב בסוף התקופה</span></div>
+            </div>
+            <table class="res-table">
+                <thead><tr><th>שנה</th><th>יתרת חוב (קרן+ריבית+הצמדה מצטברות)</th><th>מתוך שווי הנכס*</th></tr></thead>
+                <tbody id="balloonYearBody"></tbody>
+            </table>
+        </div>
+
+        <!-- GRACE RESULTS -->
+        <div class="sec res trackres" id="res-grace" style="display:none">
+            <h2>📈 גרייס - ריבית חודשית ושווי הקרן לאורך השנים</h2>
+            <div class="rgrid">
+                <div class="rbox"><strong id="gStart">-</strong><span>סכום שנמשך</span></div>
+                <div class="rbox big"><strong id="gFirstPay">-</strong><span>תשלום ריבית חודשי נוכחי</span></div>
+            </div>
+            <table class="res-table">
+                <thead><tr><th>שנה</th><th>יתרת הקרן (כולל הצמדה)</th><th>תשלום ריבית חודשי באותה שנה</th></tr></thead>
+                <tbody id="graceYearBody"></tbody>
+            </table>
+        </div>
+
+        <!-- SHPITZER RESULTS -->
+        <div class="sec res trackres" id="res-pi" style="display:none">
+            <h2>📈 ריבית + קרן - התשלום החודשי ומצב הקרן לאורך השנים</h2>
+            <div class="rgrid">
+                <div class="rbox"><strong id="pStart">-</strong><span>סכום שנמשך</span></div>
+                <div class="rbox big"><strong id="pFirstPay">-</strong><span>תשלום חודשי נוכחי (כולל קרן וריבית)</span></div>
+            </div>
+            <table class="res-table">
+                <thead><tr><th>שנה</th><th>יתרת הקרן</th><th>תשלום חודשי באותה שנה</th></tr></thead>
+                <tbody id="piYearBody"></tbody>
+            </table>
+        </div>
+        <div class="nbox">*החישוב מבוסס על ריבית חודשית = ריבית שנתית/12, והצמדה חודשית = מדד שנתי/12. שווי הנכס מוצג ללא עדכון עתידי, לצורך פשטות.</div>
+
+        <div class="cta">
+            <h3>💡 רוצים בדיקה מדויקת ומלאה של האפשרויות שלכם?</h3>
+            <p>ירדן קובי — יועץ משכנתאות מוסמך | ייעוץ ראשוני ללא עלות</p>
+            <div class="ctab">
+                <a href="tel:0533030629" class="bph">📞 053-303-0629</a>
+                <a href="https://wa.me/972533030629" target="_blank" class="bwa">💬 וואטסאפ</a>
+            </div>
+        </div>
+    </div>
+    <a href="https://yardenkoubi.com" class="back-home">🏠 חזרה לאתר הראשי</a>
+
+    <script>
+    function fmt(n){ return '₪' + Math.round(n).toLocaleString('he-IL'); }
+
+    // Age -> base financing % table (מזור, non-bank)
+    const AGE_TABLE = {
+        55:20,56:21,57:22,58:23,59:24,60:25,61:26,62:27,63:28,64:29,65:30,
+        66:31,67:32,68:33,69:34,70:35,71:36,72:37,73:38,74:39,75:40,
+        76:41,77:42,78:43,79:44,80:45,81:46,82:47,83:48,84:49,85:50
+    };
+
+    function basePct(age){
+        if(age < 55) return 0;
+        if(age > 85) return 50;
+        return AGE_TABLE[Math.floor(age)];
+    }
+
+    let channel = 'nonbank';
+    let track = 'balloon';
+
+    document.querySelectorAll('.chbtn').forEach(b => b.addEventListener('click', () => {
+        document.querySelectorAll('.chbtn').forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        channel = b.dataset.ch;
+        calcAll();
+    }));
+
+    document.querySelectorAll('.trackbtn').forEach(b => b.addEventListener('click', () => {
+        document.querySelectorAll('.trackbtn').forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        track = b.dataset.tr;
+        document.querySelectorAll('.trackres').forEach(el => el.style.display = 'none');
+        document.getElementById('res-'+track).style.display = 'block';
+        calcAll();
+    }));
+
+    document.getElementById('rateTrack').addEventListener('change', (e) => {
+        if(e.target.value !== 'custom'){
+            document.getElementById('rate').value = e.target.value;
+        }
+        calcAll();
+    });
+
+    function calcAll(){
+        const age = parseFloat(document.getElementById('age').value)||0;
+        const propValue = parseFloat(document.getElementById('propValue').value)||0;
+        const base = basePct(age);
+        const maxAmount = propValue * base/100;
+
+        document.getElementById('rBasePct').textContent = base + '%';
+        document.getElementById('rFinalPct').textContent = base.toFixed(1) + '%';
+        document.getElementById('rMaxAmount').textContent = fmt(maxAmount);
+
+        const chNote = document.getElementById('channelNote');
+        if(age < 55){
+            chNote.innerHTML = '⚠️ משכנתא הפוכה מיועדת בדרך כלל ללווים מגיל 55 ומעלה. אנא בדקו זכאות ספציפית.';
+        } else if(channel === 'nonbank'){
+            chNote.innerHTML = `💡 האחוז מוצג לפי טבלת המימון המקסימלי (חברת ביטוח/גוף חוץ-בנקאי). באדם/זוג - האחוז נקבע לפי גיל בן/בת הזוג הצעיר/ה מבין השניים. חשוב: במשכנתא הפוכה, בין אם בערוץ הזה ובין אם בבנק, אין בדיקת הכנסה/כושר החזר מקדימה - זה בדיוק היתרון המרכזי של המוצר, כי אין החזר חודשי חובה.`;
+        } else {
+            chNote.innerHTML = `💡 בערוץ הבנקאי הרגיל, הבנקים נוטים לגישה שמרנית יותר, ובפועל כל בנק עשוי לקבוע אחוז נמוך יותר מהטבלה הזו ותנאים שונים. כמו בערוץ החוץ-בנקאי, גם כאן <strong>אין בדיקת הכנסה מקדימה</strong> - כי אין חובת החזר חודשי.`;
+        }
+
+        const track_note = document.getElementById('trackNote');
+        if(track === 'balloon'){
+            track_note.innerHTML = `💡 במסלול זה אין תשלום חודשי בכלל - ולכן אין שום דרישה או בדיקה של יכולת ההחזר/הכנסה. הריבית וההצמדה פשוט מצטברות לקרן עד לפירעון (מכירת הנכס/פטירה).`;
+        } else {
+            track_note.innerHTML = `⚠️ במסלול הזה יש תשלום חודשי בפועל. גם שאין דרישת בדיקת הכנסה פורמלית כמו במשכנתא רגילה, סביר שהגוף המלווה (בנק או חוץ-בנקאי) ירצה לוודא שיש ללקוח מקור הכנסה שמאפשר לו לעמוד בתשלום החודשי הזה לאורך זמן.`;
+        }
+
+        const withdraw = Math.min(parseFloat(document.getElementById('withdrawAmount').value)||0, maxAmount || Infinity);
+        const rate = parseFloat(document.getElementById('rate').value)||0;
+        const cpi = parseFloat(document.getElementById('cpi').value)||0;
+        const years = parseInt(document.getElementById('years').value)||20;
+        const N = years*12;
+
+        const rateM = rate/100/12;
+        const cpiM = cpi/100/12;
+
+        if(track === 'balloon'){
+            document.getElementById('bStart').textContent = fmt(withdraw);
+            let balance = withdraw, interest = 0;
+            let rows = '';
+            for(let y=1; y<=years; y++){
+                for(let m=0; m<12; m++){
+                    balance = (balance + interest) * (1+cpiM);
+                    interest = balance * rateM;
+                }
+                rows += `<tr><td>שנה ${y}</td><td>${fmt(balance)}</td><td>${propValue>0?(balance/propValue*100).toFixed(1):'0'}%</td></tr>`;
+            }
+            document.getElementById('balloonYearBody').innerHTML = rows;
+            document.getElementById('bEnd').textContent = fmt(balance);
+        }
+
+        if(track === 'grace'){
+            document.getElementById('gStart').textContent = fmt(withdraw);
+            let balance = withdraw;
+            let rows = '', firstPay = 0;
+            for(let y=1; y<=years; y++){
+                let lastPay = 0;
+                for(let m=0; m<12; m++){
+                    balance = balance * (1+cpiM);
+                    lastPay = balance * rateM;
+                    if(y===1 && m===0) firstPay = lastPay;
+                }
+                rows += `<tr><td>שנה ${y}</td><td>${fmt(balance)}</td><td>${fmt(lastPay)}</td></tr>`;
+            }
+            document.getElementById('graceYearBody').innerHTML = rows;
+            document.getElementById('gFirstPay').textContent = fmt(firstPay);
+        }
+
+        if(track === 'pi'){
+            document.getElementById('pStart').textContent = fmt(withdraw);
+            const pmt0 = rateM===0 ? withdraw/N : withdraw * rateM / (1 - Math.pow(1+rateM, -N));
+            let balance = withdraw;
+            let rows = '', firstPay = 0, monthIdx = 0;
+            for(let y=1; y<=years; y++){
+                let lastLinked = balance, lastPay = 0;
+                for(let m=0; m<12; m++){
+                    monthIdx++;
+                    const linked = balance * (1+cpiM);
+                    const payment = pmt0 * Math.pow(1+cpiM, monthIdx);
+                    const interest = linked * rateM;
+                    let principal = payment - interest;
+                    if(principal > linked) principal = linked;
+                    balance = linked - principal;
+                    lastLinked = linked; lastPay = payment;
+                    if(monthIdx===1) firstPay = payment;
+                }
+                rows += `<tr><td>שנה ${y}</td><td>${fmt(lastLinked)}</td><td>${fmt(lastPay)}</td></tr>`;
+            }
+            document.getElementById('piYearBody').innerHTML = rows;
+            document.getElementById('pFirstPay').textContent = fmt(firstPay);
+        }
+    }
+
+    ['age','propValue','withdrawAmount','rate','cpi','years'].forEach(id =>
+        document.getElementById(id).addEventListener('input', calcAll));
+
+    calcAll();
+    </script>
+</body>
+</html>
